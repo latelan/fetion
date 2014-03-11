@@ -56,7 +56,8 @@ fi
 #######################################################################
 #seny message to myself
 
-message=${message// /%20}   #replace spaces
+#message=${message// /%20}   #replace spaces
+message=`sed 's// /%20/'`
 echo "Message: $message"
 msg_post_data="msg=$message&touserid=$userid"
 send_url="http://f.10086.cn/im5/chat/sendNewGroupShortMsg.action"
