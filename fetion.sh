@@ -44,7 +44,7 @@ post_data="queryKey=$destination"
 head_referer="Referer: http://f.10086.cn/im5/login/login.action?mnative=0&t=$timestamp"
 result=`curl -s -b cookie.txt -H $head_referer -d $post_data  $url`
 echo $result > temp
-result=`echo $result | grep -o -E 'idContact":[0-9]+' | sed 's/.*://g'`
+result=`grep -o -E 'idContact":[0-9]+' | sed 's/.*://g' < $result`
 if [ -n "$result" ]; then
 	userid=$result
 	echo "Id: $userid"
